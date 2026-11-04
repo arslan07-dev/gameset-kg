@@ -1,0 +1,21 @@
+# https://www.robotstxt.org/robotstxt.html
+# robots.txt for GAMESET KG (https://gameset.kg)
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Allow Googlebot and Yandex full access to public assets and pages
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Primary XML Sitemap for Google Search Console and web search engines
+Sitemap: https://gameset.kg/sitemap.xml

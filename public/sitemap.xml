@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage / Main Portal -->
+  <url>
+    <loc>https://gameset.kg/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Free Fire (0-200 Scale, Fire Button 1-100%, Safe DPI & Device Presets) -->
+  <url>
+    <loc>https://gameset.kg/games/free-fire</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Device Database (120+ Smartphones, Refresh Rates, Touch Sampling Rates, Safe DPI) -->
+  <url>
+    <loc>https://gameset.kg/devices</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Interactive Sensitivity Generator & Calibration Wizard -->
+  <url>
+    <loc>https://gameset.kg/generator</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Games Catalog -->
+  <url>
+    <loc>https://gameset.kg/games</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- PUBG Mobile (Gyroscope 300-400%, Recoil ADS, 4-Finger Claw Layouts) -->
+  <url>
+    <loc>https://gameset.kg/games/pubg-mobile</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Mobile Legends: Bang Bang (Minimap Camera, 120 FPS, Hero Lock Mode) -->
+  <url>
+    <loc>https://gameset.kg/games/mobile-legends</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Call of Duty Mobile (Speed Acceleration, Sniper Quickscope, FOV) -->
+  <url>
+    <loc>https://gameset.kg/games/cod-mobile</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Hardware Performance & FPS Optimization Guide (HyperOS, One UI, iOS) -->
+  <url>
+    <loc>https://gameset.kg/guides</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Preset & Device Side-by-Side Comparison Tool -->
+  <url>
+    <loc>https://gameset.kg/compare</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Community Settings Submission Portal -->
+  <url>
+    <loc>https://gameset.kg/submit</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- About Project & Creator (Arslan) -->
+  <url>
+    <loc>https://gameset.kg/about</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <!-- Contact & Feedback -->
+  <url>
+    <loc>https://gameset.kg/contact</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+</urlset>

@@ -941,6 +941,21 @@ app.get('/api/health', (_req: Request, res: Response) => {
   });
 });
 
+// Search Engine SEO files (sitemap.xml & robots.txt fallback routes)
+app.get('/robots.txt', (_req: Request, res: Response) => {
+  const robotsPath = isProd
+    ? path.resolve(__dirname, 'dist', 'robots.txt')
+    : path.resolve(__dirname, 'public', 'robots.txt');
+  res.type('text/plain').sendFile(robotsPath);
+});
+
+app.get('/sitemap.xml', (_req: Request, res: Response) => {
+  const sitemapPath = isProd
+    ? path.resolve(__dirname, 'dist', 'sitemap.xml')
+    : path.resolve(__dirname, 'public', 'sitemap.xml');
+  res.type('application/xml').sendFile(sitemapPath);
+});
+
 // -------------------------------------------------------------
 // Vite Dev Server / Static Production Server Mounting
 // -------------------------------------------------------------

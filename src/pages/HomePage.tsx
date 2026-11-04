@@ -40,16 +40,30 @@ export const HomePage: React.FC = () => {
       <SEO
         title={
           language === 'ru'
-            ? 'GAMESET KG — Профессиональные игровые настройки и чувствительность'
-            : 'GAMESET KG — Professional Gaming Settings & Sensitivity'
+            ? 'GAMESET KG — Игровые настройки и чувствительность Free Fire (0–200), PUBG Mobile, MLBB'
+            : 'GAMESET KG — Professional Esports Gaming Settings & Sensitivity'
         }
         description={
           language === 'ru'
-            ? 'Киберспортивная платформа игровых настроек и чувствительности для Free Fire (шкала 0–200), PUBG Mobile, Mobile Legends и Call of Duty Mobile.'
-            : 'Esports platform for calibrated game settings and sensitivities for Free Fire (0–200 scale), PUBG Mobile, Mobile Legends, and Call of Duty Mobile.'
+            ? 'GAMESET KG — киберспортивная база игровых настроек и чувствительности для Free Fire (шкала 0–200, кнопка огня, DPI), PUBG Mobile, MLBB и COD Mobile под Poco, Redmi, Samsung, iPhone.'
+            : 'Esports platform for calibrated game settings and sensitivities for Free Fire (0–200 scale), PUBG Mobile, Mobile Legends, and Call of Duty Mobile across 120+ smartphones.'
         }
-        keywords="gameset kg, настройки фри фаер 0-200, настройки пубг мобайл, калибровка сенсора, чувствительность для телефона"
+        keywords="gameset kg, настройки free fire для poco m5, чувствительность free fire кыргызстан, оттяжка free fire, настройки фри фаер 0-200, sensivity ff kyrgyzstan, настройки пубг мобайл, калибровка сенсора, бишкек игры, poco x6 pro dpi, redmi note 13 free fire, чувствительность для телефона"
         canonicalPath="/"
+        faqs={[
+          {
+            question: 'Как подобрать чувствительность Free Fire для своего смартфона на GAMESET KG?',
+            answer: 'Перейдите в раздел Free Fire или Генератор, выберите бренд и модель вашего телефона (например, POCO M5, Redmi Note 13 или iPhone), и алгоритм сгенерирует точные параметры по шкале 0–200 с учетом частоты обновления экрана и задержки сенсора.'
+          },
+          {
+            question: 'Какой размер кнопки огня рекомендуется для вертикальной оттяжки One-Tap?',
+            answer: 'Для большинства экранов с диагональю 6.5–6.7 дюймов оптимальный размер кнопки огня составляет от 38% до 48%. На компактных экранах рекомендуется 48–56%, чтобы избежать промахов.'
+          },
+          {
+            question: 'Работает ли платформа GAMESET KG для игроков из Кыргызстана и стран СНГ?',
+            answer: 'Да, GAMESET KG разработана специально для геймеров Кыргызстана и СНГ с учетом популярных моделей смартфонов (POCO, Xiaomi, Infinix, Tecno, Samsung, Apple) и актуальных обновлений 2026 года.'
+          }
+        ]}
       />
 
       {/* 1. Large Hero Section */}

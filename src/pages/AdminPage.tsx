@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { SEO } from '../components/common/SEO';
 import { CommunitySubmission, GameId, DeviceBrand } from '../types';
 import {
   Shield,
@@ -605,6 +606,11 @@ export const AdminPage: React.FC = () => {
   if (!token || !isVerified) {
     return (
       <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
+        <SEO
+          title="Админ-панель | GAMESET KG"
+          description="Закрытый шлюз управления GAMESET KG"
+          noindex={true}
+        />
         <div className="max-w-md w-full bg-[#0B0F16] border border-[#192332] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
           {/* Neon background accent */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#00FF87]/5 rounded-full blur-3xl pointer-events-none" />
@@ -720,6 +726,11 @@ export const AdminPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <SEO
+        title="Панель управления | GAMESET KG"
+        description="Закрытый шлюз управления GAMESET KG"
+        noindex={true}
+      />
       {/* Top Header & Session Bar */}
       <div className="bg-[#0B0F16] border border-[#192332] rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
         <div className="space-y-1">

@@ -8,6 +8,7 @@ export interface SEOProps {
   canonicalPath?: string;
   ogType?: 'website' | 'article' | 'video.other' | 'game';
   ogImage?: string;
+  noindex?: boolean;
   gameData?: {
     name: string;
     genre: string;
@@ -15,6 +16,12 @@ export interface SEOProps {
     activePlayers?: string;
   };
   breadcrumbs?: Array<{ name: string; item: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
+  howTo?: {
+    name: string;
+    description: string;
+    steps: Array<{ name: string; text: string }>;
+  };
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -24,8 +31,11 @@ export const SEO: React.FC<SEOProps> = ({
   canonicalPath,
   ogType = 'website',
   ogImage,
+  noindex = false,
   gameData,
   breadcrumbs,
+  faqs,
+  howTo,
 }) => {
   const { language } = useLanguage();
 
@@ -56,22 +66,38 @@ export const SEO: React.FC<SEOProps> = ({
     };
 
     // 2. Resolve Canonical & Full URL
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://gameset.kg';
+    // Prefer production canonical domain gameset.kg, but adapt to current host if needed
+    const currentOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://gameset.kg';
+    const canonicalBase = currentOrigin.includes('localhost') || currentOrigin.includes('run.app')
+      ? currentOrigin
+      : 'https://gameset.kg';
+
     const currentPath = canonicalPath || (typeof window !== 'undefined' ? window.location.pathname : '/');
-    const fullUrl = `${origin}${currentPath}`;
+    const fullUrl = `${canonicalBase}${currentPath}`;
+    const dynamicOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://gameset.kg';
 
     // Resolve Image URL
-    const defaultImage = `${origin}/src/assets/images/hero_gaming_esports_1793642581057.jpg`;
+    const defaultImage = `${canonicalBase}/src/assets/images/hero_gaming_esports_1793642581057.jpg`;
     let resolvedImage = defaultImage;
     if (ogImage) {
-      resolvedImage = ogImage.startsWith('http') ? ogImage : `${origin}${ogImage}`;
+      resolvedImage = ogImage.startsWith('http') ? ogImage : `${canonicalBase}${ogImage}`;
     }
 
-    // 3. Set standard Meta Tags
+    // 3. Set standard Meta Tags & Robots
     setMetaTag('name', 'description', description);
     if (keywords) {
       setMetaTag('name', 'keywords', keywords);
     }
+
+    // Robots indexing control
+    if (noindex) {
+      setMetaTag('name', 'robots', 'noindex, nofollow');
+      setMetaTag('name', 'googlebot', 'noindex, nofollow');
+    } else {
+      setMetaTag('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      setMetaTag('name', 'googlebot', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+    }
+
     setLinkTag('canonical', fullUrl);
 
     // 4. Set OpenGraph Meta Tags
@@ -102,7 +128,7 @@ export const SEO: React.FC<SEOProps> = ({
         publisher: {
           '@type': 'Organization',
           name: 'GAMESET KG',
-          url: origin,
+          url: canonicalBase,
           logo: {
             '@type': 'ImageObject',
             url: defaultImage,
@@ -116,7 +142,7 @@ export const SEO: React.FC<SEOProps> = ({
         offers: {
           '@type': 'Offer',
           price: '0',
-          priceCurrency: 'USD',
+          priceCurrency: 'KGS',
         },
       },
     ];
@@ -150,7 +176,39 @@ export const SEO: React.FC<SEOProps> = ({
           '@type': 'ListItem',
           position: index + 1,
           name: bc.name,
-          item: bc.item.startsWith('http') ? bc.item : `${origin}${bc.item}`,
+          item: bc.item.startsWith('http') ? bc.item : `${canonicalBase}${bc.item}`,
+        })),
+      });
+    }
+
+    // Add FAQPage Schema if FAQs are present
+    if (faqs && faqs.length > 0) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${fullUrl}#faq`,
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      });
+    }
+
+    // Add HowTo Schema if howTo steps are present
+    if (howTo && howTo.steps.length > 0) {
+      graph.push({
+        '@type': 'HowTo',
+        '@id': `${fullUrl}#howto`,
+        name: howTo.name,
+        description: howTo.description,
+        step: howTo.steps.map((st, idx) => ({
+          '@type': 'HowToStep',
+          position: idx + 1,
+          name: st.name,
+          text: st.text,
         })),
       });
     }
@@ -168,7 +226,7 @@ export const SEO: React.FC<SEOProps> = ({
       document.head.appendChild(scriptElement);
     }
     scriptElement.textContent = jsonLdContent;
-  }, [title, description, keywords, canonicalPath, ogType, ogImage, gameData, breadcrumbs, language]);
+  }, [title, description, keywords, canonicalPath, ogType, ogImage, noindex, gameData, breadcrumbs, faqs, howTo, language]);
 
   return null;
 };
