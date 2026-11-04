@@ -1,0 +1,6 @@
+{
+  "name": "GAMESET KG — Профессиональные игровые настройки",
+  "description": "Профессиональная киберспортивная платформа игровых настроек и чувствительности для Free Fire, PUBG Mobile, Mobile Legends и Call of Duty Mobile.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #05070A;
+    color: #E2E8F0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom esports scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1B2230;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF87;
+}
+
+/* Tech gaming surfaces & subtle neon glow */
+.card-graphite {
+  background-color: #0E1219;
+  border: 1px solid #1C2433;
+}
+
+.card-graphite:hover {
+  border-color: #2D3A4F;
+}
+
+.card-graphite-active {
+  background-color: #0E1219;
+  border: 1px solid #00FF87;
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.12);
+}
+
+.neon-btn-primary {
+  background-color: #00FF87;
+  color: #05070A;
+  font-weight: 800;
+  box-shadow: 0 0 16px rgba(0, 255, 135, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neon-btn-primary:hover {
+  background-color: #10E760;
+  box-shadow: 0 0 24px rgba(0, 255, 135, 0.4);
+  transform: translateY(-1px);
+}
+
+.neon-subtle-glow {
+  text-shadow: 0 0 16px rgba(0, 255, 135, 0.35);
+}
