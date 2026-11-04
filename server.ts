@@ -15,11 +15,25 @@ app.set('trust proxy', 1);
 
 app.use(express.json());
 
-// Defensive security headers
-app.use((_req, res, next) => {
+// Defensive security headers & Netlify URL normalization
+app.use((req, res, next) => {
+  // Normalize Netlify function path prefix if routed via /.netlify/functions/api
+  if (req.url.startsWith('/.netlify/functions/api')) {
+    req.url = req.url.replace('/.netlify/functions/api', '/api');
+  }
+
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  // Allow same-origin and cross-subdomain API calls for published domains
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-admin-token');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
   next();
 });
 
@@ -950,6 +964,12 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Failed to start server:', err);
-});
+// Only launch standalone Express HTTP listener when running standalone (Cloud Run / Docker / dev server)
+// In Netlify Functions / AWS Lambda, the serverless handler manages request execution
+if (!process.env.NETLIFY && !process.env.AWS_LAMBDA_FUNCTION_NAME && !process.env.LAMBDA_TASK_ROOT) {
+  startServer().catch((err) => {
+    console.error('Failed to start server:', err);
+  });
+}
+
+export { app };
